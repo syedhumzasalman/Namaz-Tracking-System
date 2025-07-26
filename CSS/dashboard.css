@@ -80,12 +80,20 @@ body {
     font-size: 24px;
     cursor: pointer;
     user-select: none;
-  }
+}
 
-  .namaz-toggle.checked {
+.namaz-toggle.checked {
     color: green;
-  }
+}
 
-  .namaz-toggle.unchecked {
+.namaz-toggle.unchecked {
     color: red;
-  }
+}
+
+
+@media (max-width: 576px) {
+    .hadith {
+        display: none;
+        
+    }
+}

@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon"
+        href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPM_395QC34wRYwklbrtMNitsEXaVnBe_6Cw&s"
+        type="image/x-icon">
     <title>Student Dashboard</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -70,12 +73,6 @@
                     </a>
                 </li>
 
-                <li class="nav-item mb-2">
-                    <a class="nav-link" href="#" id="assignment">
-                        <i class="fas fa-fw fa-cog"></i>
-                        <span>Settings</span>
-                    </a>
-                </li>
             </ul>
 
         </div>
@@ -118,70 +115,13 @@
             <main class="container-fluid p-4" id="mainContent">
                 <h2 class="h4 fw-bold mb-4">Dashboard Overview</h2>
 
-                <!-- Stats Cards -->
+                <!-- pie chart -->
                 <div class="row g-4 mb-4">
-                    <div class="col-md-4">
-                        <div class="card card-hover border-0 shadow-sm h-100">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h6 class="card-subtitle text-muted">Todays Total Prayers</h6>
-                                        <h3 class="card-title mt-2 text-primary" id="enrolledCoursesCount">5</h3>
-                                    </div>
-                                    <i class="fas fa-praying-hands fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="card card-hover border-0 shadow-sm h-100">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h6 class="card-subtitle text-muted">Completed</h6>
-                                        <h3 class="card-title mt-2 text-success" id="completeCourse">0</h3>
-                                    </div>
-                                    <i class="fas fa-check-circle fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <div class="col-md-4">
-                        <div class="card card-hover border-0 shadow-sm h-100">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h6 class="card-subtitle text-muted">Pending</h6>
-                                        <h3 class="card-title mt-2 text-warning" id="assigmentCount">0</h3>
-                                    </div>
-                                    <i class="fas fa-clock fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="row g-4 mb-4">
-                    <!-- Islamic Quote -->
                     <div class="col-12 col-md-6">
-                        <div class="card border-0 shadow-lg h-100"
-                            style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);">
-                            <div class="card-body text-white p-4 d-flex flex-column justify-content-between h-100">
-                                <div>
-                                    <div class="d-flex align-items-center mb-3">
-                                        <i class="fas fa-quote-left fa-2x opacity-50 me-3"></i>
-                                        <h4 class="mb-0">Hadith of the Day</h4>
-                                    </div>
-                                    <blockquote class="blockquote mb-0" id=hadith-list>
-
-                                    </blockquote>
-                                </div>
-                            </div>
+                        <div style="max-width: 400px; height: auto">
+                            <p class="text-muted mb-3" id="beforechart">This chart shows your Namaz status</p>
+                            <canvas id="namazPieChart"></canvas>
                         </div>
                     </div>
 
@@ -223,6 +163,30 @@
                             </div>
                         </div>
                     </div>
+
+                </div>
+
+                <div class="row g-4 mt-5">
+                    <!-- Islamic Quote -->
+                    <div class="col-12 col-md-6 hadith">
+                        <div class="card border-0 shadow-lg h-100"
+                            style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);">
+                            <div class="card-body text-white p-4 d-flex flex-column justify-content-between h-100">
+                                <div>
+                                    <div class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-quote-left fa-2x opacity-50 me-3"></i>
+                                        <h4 class="mb-0">Hadith of the Day</h4>
+                                    </div>
+                                    <blockquote class="blockquote mb-0" id=hadith-list>
+
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
                 </div>
 
 
@@ -237,6 +201,8 @@
     <!-- Bootstrap Bundle JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <!-- pie chart  -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- External Javascript -->
     <script type="module" src="./JavaScript/dashboard.js"></script>
     <script type="module" src="./JavaScript/hadith.js"></script>

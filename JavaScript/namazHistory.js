@@ -1,4 +1,4 @@
-import { auth, getDocs, collection, db, doc, setDoc, getDoc, onAuthStateChanged } from "../Firebase/firebase.js";
+import { getDocs, collection, db, doc, setDoc, getDoc } from "../Firebase/firebase.js";
 
 let mainContent = document.getElementById("mainContent");
 let namazHistory = document.getElementById("namaz-history");
@@ -17,7 +17,15 @@ const getDateRange = (start, end) => {
 };
 
 
-const renderHistoryPage = () => {
+const renderHistoryPage = async () => {
+
+
+  const userDoc = await getDoc(doc(db, "users", uid));
+
+  userCreatedAt = new Date(userDoc.data().creationTime);
+
+  console.log("userCreatedAt:", userCreatedAt);
+
   mainContent.innerHTML = `
     <div class="container my-4">
       <h2 class="text-center mb-4">📖 Namaz Tracker History</h2>
@@ -106,6 +114,31 @@ const loadNamazData = async (filter) => {
 
   document.getElementById("namaz-history-cards").innerHTML = historyCards;
 
+  if (uid) {
+    let count = {
+      Completed: 0,
+      Pending: 0,
+      "Qaza Done": 0,
+      Missing: 0
+    };
+
+    for (const date of filteredDates) {
+      const { prayers } = historyMap[date];
+      for (const status of Object.values(prayers)) {
+        if (count[status] !== undefined) {
+          count[status]++;
+        }
+      }
+    }
+
+    for (const date of missingDates) {
+      count.Missing += 5;
+    }
+
+    await setDoc(doc(db, "users", uid, "namazStats", "summary"), count);
+    
+  }
+
   let missingCards = missingDates.map(date => `
     <button class="btn btn-outline-danger m-1" onclick="createMissingDay('${date}')">${date}</button>
   `).join("");
@@ -124,7 +157,7 @@ window.markQaza = async (date, prayerName) => {
   await setDoc(prayerRef, data);
 
   Swal.fire("Updated", `${prayerName} marked as Qaza Done`, "success");
-  loadNamazData(document.getElementById("history-type").value); // refresh current filter
+  loadNamazData(document.getElementById("history-type").value);
 };
 
 
@@ -138,15 +171,14 @@ window.createMissingDay = async (date) => {
   };
   await setDoc(doc(db, "users", uid, "namazTracking", date), { date, prayers });
   Swal.fire("Created", `Record for ${date} created`, "success");
-  loadNamazData(document.getElementById("history-type").value); // refresh
+  loadNamazData(document.getElementById("history-type").value);
 };
 
 
-onAuthStateChanged(auth, async (user) => {
-  if (user) {
-    userCreatedAt = new Date(user.metadata.creationTime);
-    if (namazHistory) {
-      namazHistory.addEventListener("click", renderHistoryPage);
-    }
+
+(async () => {
+  if (namazHistory) {
+    namazHistory.addEventListener("click", renderHistoryPage);
   }
-});
+})();
+

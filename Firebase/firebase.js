@@ -18,8 +18,10 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
-  
+  signInWithPopup,
+
 } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
+
 
 
 // Initialize Firebase
@@ -47,4 +49,5 @@ export {
   query,
   signOut,
   onAuthStateChanged,
+  signInWithPopup,
 };

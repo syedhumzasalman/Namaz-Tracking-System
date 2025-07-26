@@ -8,6 +8,7 @@ const handleSignOut = () => {
     signOut(auth)
         .then(() => {
             localStorage.removeItem("uid");
+            localStorage.removeItem("namazRatio");
 
             window.location.replace("../index.html");
         })
