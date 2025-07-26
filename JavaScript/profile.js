@@ -102,7 +102,7 @@ window.openUpdateProfileForm = async () => {
     html: `
       <input id="swal-firstName" class="swal2-input" placeholder="First Name" value="${userData.firstName || ''}">
       <input id="swal-lastName" class="swal2-input" placeholder="Last Name" value="${userData.lastName || ''}">
-      <input id="swal-email" class="swal2-input" placeholder="Email" value="${userData.email || ''}">
+      <input id="swal-email" class="swal2-input" placeholder="Email" value="${userData.email || ''}" readonly>
       <input id="swal-mobile" class="swal2-input" placeholder="Mobile Number" value="${userData.mobileNumber || ''}">
       <input id="swal-address" class="swal2-input" placeholder="Address" value="${userData.address || ''}">
       <input id="swal-dob" class="swal2-input" type="date" placeholder="Date of Birth" value="${userData.dateOfBirth || ''}">
