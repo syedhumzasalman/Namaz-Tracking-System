@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Namaz Tracker - Track Your Daily Prayers</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      background-color: #faf5e4;
+    }
+    .hero {
+      background: linear-gradient(rgba(44, 120, 108, 0.85), rgba(44, 120, 108, 0.85));
+      color: white;
+      border-radius: 10px;
+    }
+    .headerColour {
+      background: linear-gradient(rgba(44, 120, 108, 0.85), rgba(44, 120, 108, 0.85));
+      color: white;
+    }
+    .feature-icon {
+      font-size: 2rem;
+      color: #2c786c;
+    }
+  </style>
+</head>
+<body onload="authCheck()">
+
+  <!-- Header -->
+  <header class="headerColour text-white py-4 shadow">
+    <div class="container text-center">
+      <h1 class="mb-0 fs-2">Namaz Tracker</h1>
+      <p class="mb-0 small">Track Your Daily Prayers with Ease</p>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="container my-5">
+    <div class="p-5 text-center hero">
+      <h2 class="mb-4">Stay Consistent With Your Prayers</h2>
+      <p class="mb-4">Track your daily namaz, set reminders, and improve your prayer habits with our simple and intuitive tracking system.</p>
+      <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+        <a href="./loginIn.html" class="btn btn-warning text-dark fw-bold px-4">Login</a>
+        <a href="./signUp.html" class="btn btn-outline-light fw-bold px-4">Sign Up</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="container my-5">
+    <div class="row g-4 text-center justify-content-center">
+      <div class="col-sm-10 col-md-4">
+        <div class="bg-white p-4 rounded shadow-sm">
+          <div class="feature-icon mb-3">📿</div>
+          <h5>Easy Tracking</h5>
+          <p class="text-muted">Simply check off each namaz as you complete it throughout the day.</p>
+        </div>
+      </div>
+      <div class="col-sm-10 col-md-4">
+        <div class="bg-white p-4 rounded shadow-sm">
+          <div class="feature-icon mb-3">📊</div>
+          <h5>Progress Reports</h5>
+          <p class="text-muted">View your prayer history and track your consistency over time.</p>
+        </div>
+      </div>
+      <div class="col-sm-10 col-md-4">
+        <div class="bg-white p-4 rounded shadow-sm">
+          <div class="feature-icon mb-3">🕌</div>
+          <h5>Prayer Times</h5>
+          <p class="text-muted">Get accurate prayer times based on your location.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-3">
+    <div class="container">
+      <small>&copy; 2025 Namaz Tracker. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- External Javascript -->
+   <script type="module" src="./JavaScript/index.js"></script>
+</body>
+</html>
